@@ -1,0 +1,8 @@
+This is a simple script to demonstrate a concurrent writer-pool for quick benchmarks of a cluster.  
+
+Dependencies: python and the couchdbkit module 
+> 'sudo pip install couchdbkit'
+
+Tweak credentials specified in upload.py and then:
+> python upload.py
+
