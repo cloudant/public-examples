@@ -8,12 +8,12 @@ def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
     
 if __name__=='__main__':
     #CHANGE THESE TWO LINES TO SPECIFY CLUSTER AND CREDS
-    uri = 'http://<username>:<pwd>@<cluster/user>.cloudant.com'
+    uri = 'https://<username>:<pwd>@<username>.cloudant.com'
     dbname = 'rate_test'
     
     #NUMBER OF DOCUMENTS TO UPLOAD
     ndocs = 100000
-    nworkers = 40 #n_threads
+    nworkers = 20 #n_threads
     
     s = Server(uri)
     db = s.get_or_create_db(dbname)
@@ -25,7 +25,6 @@ if __name__=='__main__':
     start = time.time()
     original = start
     step = 1000
-    ndocs = 100000
     docs = []
     
     for i in range(0,ndocs):

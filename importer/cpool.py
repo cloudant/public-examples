@@ -1,13 +1,11 @@
 import sys, os, time, datetime, Queue, thread
 from threading import *
 from couchdbkit import Server, Database
-from restkit import Manager
 import json
     
 
 def worker(iworker, tout, uri, dbname, inQueue):
-    pool = Manager(timeout=tout)
-    s = Server(uri,pool_instance=pool)
+    s = Server(uri)
     db = s[dbname]
     print 'worker:\t%i started for db %s' % (iworker, dbname)
     sys.stdout.flush()
@@ -42,8 +40,7 @@ class CloudantPool(object):
         self.counter = 0
         
         #make sure DB exists
-        pool = Manager(timeout=self.timeout)
-        self.server = Server(self.uri,pool_instance=pool)
+        self.server = Server(self.uri)
         self.db = self.server.get_or_create_db(self.dbname)
         print self.db.info()
         
